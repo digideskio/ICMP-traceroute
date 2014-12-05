@@ -15,11 +15,12 @@ import select
 TIMEOUT = 2.0
 TRIES = 2
 ABSOLUTE_TTL_MAX = 255
+DEBUG_MODE = 1
 
 
 def main():
     ip = socket.gethostbyname("google.com")
-    probe(ip, 3)
+    binary_traceroute(ip)
     # with open('targets.txt') as file_name:
     # ips = file_name.readlines()
     #     for i in ips:
@@ -127,23 +128,25 @@ def get_ip(hostname):
 
 # runs a traceroute against the host_name, using a binary search to calculate the optimal TTL
 # algorithm adapted from: http://en.wikipedia.org/wiki/Binary_search_algorithm#Iterative
-def invoke_trace_route(host_name):
+def binary_traceroute(host_ip):
     rapid_increase_phase = 1
     ttl_ub = 16  # initialized to an invalid value
     ttl_lb = 0
     ttl_current = 16
     while ttl_ub - ttl_lb > 1 or rapid_increase_phase:
-        _, icmp_value = probe(host_name, ttl_current)
+        _, icmp_value = probe(host_ip, ttl_current)
+        if DEBUG_MODE:
+            print "probed %s with %d hops, returning an icmp of %s" % (host_ip, ttl_current, icmp_value)
         # icmp_value of 3 (dest_unreachable) indicates ttl was too high, OR just right (tricky)
         # icmp_value of 11 (ttl_expired) indicates ttl was too low, and packet was dropped before destination
         if icmp_value is 11 and rapid_increase_phase:
-            rapid_increase_phase = 0
-            ttl_ub = ttl_current
-            ttl_lb = (ttl_lb + ttl_ub) / 2
-        elif icmp_value is 3 and rapid_increase_phase:
             ttl_lb = ttl_current
             ttl_ub *= 2
             # todo: use the absolute max_ttl
+        elif icmp_value is 3 and rapid_increase_phase:
+            rapid_increase_phase = 0
+            ttl_ub = ttl_current
+            ttl_lb = (ttl_lb + ttl_ub) / 2
         elif icmp_value is 11:
             ttl_lb = ttl_current
             ttl_ub = (ttl_lb + ttl_ub) / 2
@@ -152,7 +155,8 @@ def invoke_trace_route(host_name):
             ttl_lb = (ttl_lb + ttl_ub) / 2
         ttl_current = (ttl_lb + ttl_ub) / 2
     # exited while loop, run the traceroute with ttl_ub.
-    print probe(host_name, ttl_ub)
+    _, output = probe(host_ip, ttl_ub)
+    print output
 
 if __name__ == '__main__':
     main()
