@@ -155,8 +155,10 @@ def binary_traceroute(host_ip):
             ttl_lb = (ttl_lb + ttl_ub) / 2
         ttl_current = (ttl_lb + ttl_ub) / 2
     # exited while loop, run the traceroute with ttl_ub.
-    _, output = probe(host_ip, ttl_ub)
-    print output
+    # TODO: iterate up through ttl_ub, probing that host, and adding it to the final string
+    for i in xrange(ttl_ub):
+        output, _ = probe(host_ip, ttl_ub)
+        print output
 
 if __name__ == '__main__':
     main()
