@@ -24,7 +24,7 @@ def main():
     # with open('targets.txt') as file_name:
     # ips = file_name.readlines()
     #     for i in ips:
-    #         invoke_trace_route(i.strip('\n'))
+    #         binary_traceroute(i.strip('\n'))
 
 
 # calculates the checksum of the packet, returns the checksum
@@ -103,7 +103,6 @@ def probe(ip, ttl):
             icmp_header_content = received_packet[20:28]  # grab the header from the packet
             # unpack the ICMP header: unsigned short, unsigned short, signed short
             icmp_type, a, b, c, d = struct.unpack("bbHHh", icmp_header_content)
-            print "TYPE: %d" % icmp_type
             readable_name = get_name(address[0])
             if icmp_type == 11:  # time exceeded
                 return_array.append("  %d rtt=%.0f ms %s" % (ttl, (time_received - t) * 1000, readable_name))
@@ -133,6 +132,7 @@ def binary_traceroute(host_ip):
     ttl_ub = 16  # initialized to an invalid value
     ttl_lb = 0
     ttl_current = 16
+    print "**********BEGIN BINARY SEARCH PHASE**********"
     while ttl_ub - ttl_lb > 1 or rapid_increase_phase:
         _, icmp_value = probe(host_ip, ttl_current)
         if DEBUG_MODE:
@@ -154,11 +154,11 @@ def binary_traceroute(host_ip):
             ttl_ub = ttl_current
             ttl_lb = (ttl_lb + ttl_ub) / 2
         ttl_current = (ttl_lb + ttl_ub) / 2
+    print "**********END BINARY SEARCH PHASE**********"
     # exited while loop, run the traceroute with ttl_ub.
-    # TODO: iterate up through ttl_ub, probing that host, and adding it to the final string
-    for i in xrange(ttl_ub):
-        output, _ = probe(host_ip, ttl_ub)
-        print output
+    for i in xrange(1, ttl_ub):
+        output, _ = probe(host_ip, i)
+        print output[0]
 
 if __name__ == '__main__':
     main()
