@@ -90,31 +90,31 @@ def probe(ip, ttl):
             is_timeout = select.select([recv_socket], [], [], time_remaining)
             time_in_select = (time.time() - t)
             if not is_timeout[0]:  # changed from == []
-                return_array.append(" A Timeout occurred  ")
+                return_array.append(" A Timeout occurred  (1)")
             received_packet, address = recv_socket.recvfrom(1024)
             time_received = time.time()
             time_remaining -= time_in_select
             if time_remaining <= 0:
-                return_array.append(" A Timeout occurred  ")
+                return_array.append(" A Timeout occurred  (2)")
         except timeout:
-            print 'minor timeout'
-            continue
+            return_array.append(" A Timeout occurred  (3)")
+            return return_array, -1
         else:
             icmp_header_content = received_packet[20:28]  # grab the header from the packet
             # unpack the ICMP header: unsigned short, unsigned short, signed short
             icmp_type, a, b, c, d = struct.unpack("bbHHh", icmp_header_content)
             readable_name = get_name(address[0])
             if icmp_type == 11:  # time exceeded
-                return_array.append("  %d rtt=%.0f ms %s" % (ttl, (time_received - t) * 1000, readable_name))
+                return_array.append("11:  %d rtt=%.0f ms %s" % (ttl, (time_received - t) * 1000, readable_name))
             elif icmp_type == 3:  # destination unreachable, interpreted as success, oddly enough
-                return_array.append("  %d    rtt=%.0f ms    %s" % (ttl, (time_received - t) * 1000, readable_name))
+                return_array.append("03:  %d    rtt=%.0f ms    %s" % (ttl, (time_received - t) * 1000, readable_name))
             elif icmp_type == 0:  # echo reply, doesn't really happen
                 packet_bytes = struct.calcsize("d")
                 time_sent = struct.unpack("d", received_packet[28:28 + packet_bytes])[0]
-                return_array.append("  %d rtt=%.0f ms %s" % (ttl, (time_received - time_sent) * 1000, readable_name))
+                return_array.append("00:  %d rtt=%.0f ms %s" % (ttl, (time_received - time_sent) * 1000, readable_name))
                 return
             else:
-                return_array.append(" A Timeout occurred  ")
+                return_array.append(" A Timeout occurred  (4)")
             break
         finally:
             send_socket.close()
@@ -143,14 +143,11 @@ def binary_traceroute(host_ip):
             ttl_lb = ttl_current
             ttl_ub *= 2
             # todo: use the absolute max_ttl
-        elif icmp_value is 3 and rapid_increase_phase:
-            rapid_increase_phase = 0
-            ttl_ub = ttl_current
-            ttl_lb = (ttl_lb + ttl_ub) / 2
         elif icmp_value is 11:
             ttl_lb = ttl_current
             ttl_ub = (ttl_lb + ttl_ub) / 2
         elif icmp_value is 3:
+            rapid_increase_phase = 0
             ttl_ub = ttl_current
             ttl_lb = (ttl_lb + ttl_ub) / 2
         ttl_current = (ttl_lb + ttl_ub) / 2
