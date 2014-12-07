@@ -14,17 +14,15 @@ import select
 
 TIMEOUT = 2.0
 TRIES = 2
-ABSOLUTE_TTL_MAX = 255
+ABSOLUTE_TTL_MAX = 64
 DEBUG_MODE = 1
 
 
 def main():
-    ip = socket.gethostbyname("cwru.edu")
-    binary_traceroute(ip)
-    # with open('targets.txt') as file_name:
-    # ips = file_name.readlines()
-    #     for i in ips:
-    #         binary_traceroute(i.strip('\n'))
+    with open('targets.txt') as file_name:
+        ips = file_name.readlines()
+        for ip in ips:
+            binary_traceroute(ip.strip('\n'))
 
 
 # calculates the checksum of the packet, returns the checksum
@@ -87,9 +85,9 @@ def probe(ip, ttl):
         try:
             send_socket.sendto(build_packet(), (ip, 33434))
             t = time.time()
-            is_timeout = select.select([recv_socket], [], [], time_remaining)
+            is_not_timeout = select.select([recv_socket], [], [], time_remaining)
             time_in_select = (time.time() - t)
-            if not is_timeout[0]:  # changed from == []
+            if not is_not_timeout[0]:
                 return_array.append(" A Timeout occurred  (type 1)")
             received_packet, address = recv_socket.recvfrom(1024)
             time_received = time.time()
@@ -161,6 +159,8 @@ def binary_traceroute(host_ip):
     for i in xrange(1, ttl_ub+1):
         output, _ = probe(host_ip, i)
         print output[0]
+        if _ is 3:
+            break
 
 if __name__ == '__main__':
     main()
