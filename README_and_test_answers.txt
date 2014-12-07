@@ -1,11 +1,13 @@
 ********************  README  ********************
+nobody ever responds with an ICMP response of 0, and that makes me sad.
+the only responses, the entire time I was writing this project, were 3 or 11.
 
+Regardless, 'sudo python ./rttMeasurement.py' seems to work how I would like it to.
+Yeah, I switched around what IPs I'm testing it on, but that's because nobody plays nice.  This is noted in the
+assignment, and the traceroute run against the 9th IP in the list shows this behaviour.
+No ICMP response 3 is ever given.  So I used this as a sample to show a ABSOLUTE_MAX_TTL value.
 
-
-
-
-
-
+So test 9 will take some time as you wait for the last several hops to timeout.
 
 
 ********************  Text Answers  ********************
@@ -36,3 +38,6 @@
     Precedence cutoff in effect
     TTL expired
     defragmentation time exceeded
+
+
+I included the sample run I used to compile "Ping dataset" in the text file "source_dataset.txt"
