@@ -105,7 +105,7 @@ def probe(ip, ttl):
             if icmp_type == 11:  # time exceeded
                 return_array.append("11:  %d rtt=%.0f ms %s" % (ttl, (time_received - t) * 1000, readable_name))
             elif icmp_type == 3:  # destination unreachable, interpreted as success, oddly enough
-                return_array.append("03:  %d    rtt=%.0f ms    %s" % (ttl, (time_received - t) * 1000, readable_name))
+                return_array.append("03:  %d rtt=%.0f ms %s" % (ttl, (time_received - t) * 1000, readable_name))
             elif icmp_type == 0:  # echo reply, doesn't really happen
                 packet_bytes = struct.calcsize("d")
                 time_sent = struct.unpack("d", received_packet[28:28 + packet_bytes])[0]

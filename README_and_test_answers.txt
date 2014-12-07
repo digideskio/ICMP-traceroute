@@ -1,3 +1,14 @@
+********************  README  ********************
+
+
+
+
+
+
+
+
+
+********************  Text Answers  ********************
 -TTL is too small if the destination host isn't reached by the time the packet is dropped
 
 -TTL is too large if a response from the desired host is received.  This can be tricky because this is also

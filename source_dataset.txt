@@ -1,0 +1,258 @@
+╭─root@eecs-socket-05  ~/ICMP-traceroute  ‹master*›
+╰─$ python rttMeasurement.py
+**********BEGIN BINARY SEARCH PHASE**********
+probed 208.82.16.81 with 16 hops, returning an icmp of 3
+probed 208.82.16.81 with 8 hops, returning an icmp of 11
+probed 208.82.16.81 with 12 hops, returning an icmp of 11
+probed 208.82.16.81 with 14 hops, returning an icmp of 11
+probed 208.82.16.81 with 15 hops, returning an icmp of 11
+**********END BINARY SEARCH PHASE**********
+ICMP_Value  Hop_number  rtt  host_IP(hostname)
+11:  1 rtt=5 ms 129.22.148.2 (host name could not be determined)
+11:  2 rtt=1 ms 10.2.0.98 (host name could not be determined)
+11:  3 rtt=1 ms 10.2.3.169 (host name could not be determined)
+11:  4 rtt=1 ms 192.5.109.1 (inetrouter0-v103.cwru.edu)
+11:  5 rtt=2 ms 199.18.156.65 (clevs-r5-xe-2-2-0s445.core.oar.net)
+11:  6 rtt=10 ms 198.71.47.21 (xe-8-3-0.1118.asbn0.tr-cps.internet2.edu)
+11:  7 rtt=20 ms 64.57.20.106 (host name could not be determined)
+11:  8 rtt=21 ms 64.125.20.121 (ae1.cr2.dca2.us.above.net)
+11:  9 rtt=40 ms 64.125.21.54 (ae14.cr2.iah1.us.above.net)
+11:  10 rtt=65 ms 64.125.21.86 (ae3.cr2.lax112.us.above.net)
+11:  11 rtt=66 ms 64.125.31.233 (ae1.cr2.sjc2.us.above.net)
+11:  12 rtt=71 ms 64.125.31.74 (ae10.mpr4.sjc7.us.above.net)
+11:  13 rtt=78 ms 64.125.28.1 (ae11.mpr3.sjc7.us.above.net)
+11:  14 rtt=75 ms 64.124.201.186 (64.124.201.186.t00536.above.net)
+11:  15 rtt=69 ms 208.82.17.58 (host name could not be determined)
+03:  16    rtt=68 ms    208.82.16.81 (www.ning.com)
+**********BEGIN BINARY SEARCH PHASE**********
+probed 198.41.209.143 with 16 hops, returning an icmp of 3
+probed 198.41.209.143 with 8 hops, returning an icmp of 11
+probed 198.41.209.143 with 12 hops, returning an icmp of 3
+probed 198.41.209.143 with 10 hops, returning an icmp of 11
+probed 198.41.209.143 with 11 hops, returning an icmp of 3
+**********END BINARY SEARCH PHASE**********
+ICMP_Value  Hop_number  rtt  host_IP(hostname)
+11:  1 rtt=18 ms 129.22.148.2 (host name could not be determined)
+11:  2 rtt=0 ms 10.2.0.98 (host name could not be determined)
+11:  3 rtt=1 ms 10.2.3.169 (host name could not be determined)
+ A Timeout occurred  (type 1)
+11:  5 rtt=3 ms 199.18.156.65 (clevs-r5-xe-2-2-0s445.core.oar.net)
+11:  6 rtt=8 ms 199.218.39.253 (clmbn-r5-et-8-0-0s100.core.oar.net)
+11:  7 rtt=18 ms 216.66.76.181 (v1455.core1.chi1.he.net)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+03:  11    rtt=20 ms    198.41.209.143 (host name could not be determined)
+**********BEGIN BINARY SEARCH PHASE**********
+probed 74.125.225.38 with 16 hops, returning an icmp of 3
+probed 74.125.225.38 with 8 hops, returning an icmp of 11
+probed 74.125.225.38 with 12 hops, returning an icmp of 3
+probed 74.125.225.38 with 10 hops, returning an icmp of 3
+probed 74.125.225.38 with 9 hops, returning an icmp of 11
+**********END BINARY SEARCH PHASE**********
+ICMP_Value  Hop_number  rtt  host_IP(hostname)
+11:  1 rtt=0 ms 129.22.148.2 (host name could not be determined)
+11:  2 rtt=0 ms 10.2.0.98 (host name could not be determined)
+11:  3 rtt=1 ms 10.2.3.165 (host name could not be determined)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+11:  6 rtt=6 ms 199.218.39.245 (toldb-r5-et-0-0-0s100.core.oar.net)
+11:  7 rtt=15 ms 192.35.170.50 (host name could not be determined)
+11:  8 rtt=24 ms 209.85.254.120 (host name could not be determined)
+11:  9 rtt=16 ms 209.85.250.28 (host name could not be determined)
+03:  10    rtt=15 ms    74.125.225.38 (ord08s06-in-f6.1e100.net)
+**********BEGIN BINARY SEARCH PHASE**********
+probed 178.18.22.152 with 16 hops, returning an icmp of 3
+probed 178.18.22.152 with 8 hops, returning an icmp of 11
+probed 178.18.22.152 with 12 hops, returning an icmp of 11
+probed 178.18.22.152 with 14 hops, returning an icmp of 3
+probed 178.18.22.152 with 13 hops, returning an icmp of 11
+**********END BINARY SEARCH PHASE**********
+ICMP_Value  Hop_number  rtt  host_IP(hostname)
+11:  1 rtt=0 ms 129.22.148.2 (host name could not be determined)
+11:  2 rtt=0 ms 10.2.0.98 (host name could not be determined)
+11:  3 rtt=1 ms 10.2.3.165 (host name could not be determined)
+ A Timeout occurred  (type 1)
+11:  5 rtt=5 ms 199.18.156.65 (clevs-r5-xe-2-2-0s445.core.oar.net)
+11:  6 rtt=11 ms 199.218.39.253 (clmbn-r5-et-8-0-0s100.core.oar.net)
+11:  7 rtt=22 ms 216.66.76.181 (v1455.core1.chi1.he.net)
+11:  8 rtt=42 ms 184.105.223.162 (100ge5-2.core1.nyc4.he.net)
+11:  9 rtt=105 ms 72.52.92.165 (100ge7-2.core1.lon2.he.net)
+ A Timeout occurred  (type 1)
+11:  11 rtt=135 ms 31.31.38.79 (host name could not be determined)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+03:  14    rtt=143 ms    178.18.22.152 (host name could not be determined)
+**********BEGIN BINARY SEARCH PHASE**********
+probed 199.59.149.198 with 16 hops, returning an icmp of 3
+probed 199.59.149.198 with 8 hops, returning an icmp of 11
+probed 199.59.149.198 with 12 hops, returning an icmp of 3
+probed 199.59.149.198 with 10 hops, returning an icmp of 3
+probed 199.59.149.198 with 9 hops, returning an icmp of 11
+**********END BINARY SEARCH PHASE**********
+ICMP_Value  Hop_number  rtt  host_IP(hostname)
+11:  1 rtt=1 ms 129.22.148.2 (host name could not be determined)
+11:  2 rtt=0 ms 10.2.0.98 (host name could not be determined)
+11:  3 rtt=0 ms 10.2.3.163 (host name could not be determined)
+11:  4 rtt=1 ms 192.5.109.1 (inetrouter0-v103.cwru.edu)
+11:  5 rtt=3 ms 199.18.156.65 (clevs-r5-xe-2-2-0s445.core.oar.net)
+ A Timeout occurred  (type 1)
+11:  7 rtt=17 ms 206.223.119.171 (eqix-ch2.twitter.com)
+11:  8 rtt=74 ms 199.16.159.31 (host name could not be determined)
+11:  9 rtt=75 ms 199.16.159.49 (ae52.smf1-er1.twttr.com)
+03:  10    rtt=74 ms    199.59.149.198 (www2.twitter.com)
+**********BEGIN BINARY SEARCH PHASE**********
+probed 144.160.155.43 with 16 hops, returning an icmp of 11
+probed 144.160.155.43 with 32 hops, returning an icmp of 3
+**********END BINARY SEARCH PHASE**********
+ICMP_Value  Hop_number  rtt  host_IP(hostname)
+11:  1 rtt=1 ms 129.22.148.2 (host name could not be determined)
+11:  2 rtt=1 ms 10.2.0.98 (host name could not be determined)
+11:  3 rtt=1 ms 10.2.3.165 (host name could not be determined)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+11:  6 rtt=6 ms 199.218.39.253 (clmbn-r5-et-8-0-0s100.core.oar.net)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+11:  9 rtt=28 ms 216.206.237.97 (jfk-edge-25.inet.qwest.net)
+ A Timeout occurred  (type 1)
+11:  11 rtt=35 ms 63.146.26.2 (host name could not be determined)
+11:  12 rtt=78 ms 12.122.131.86 (cr1.n54ny.ip.att.net)
+11:  13 rtt=80 ms 12.122.1.2 (cr2.cgcil.ip.att.net)
+11:  14 rtt=81 ms 12.122.2.53 (cr1.cgcil.ip.att.net)
+11:  15 rtt=88 ms 12.122.4.121 (cr1.sffca.ip.att.net)
+11:  16 rtt=75 ms 12.122.110.5 (gar2.placa.ip.att.net)
+11:  17 rtt=123 ms 12.91.205.18 (host name could not be determined)
+03:  18    rtt=80 ms    144.160.155.43 (att.com)
+**********BEGIN BINARY SEARCH PHASE**********
+probed 192.237.143.155 with 16 hops, returning an icmp of 11
+probed 192.237.143.155 with 32 hops, returning an icmp of 3
+**********END BINARY SEARCH PHASE**********
+ICMP_Value  Hop_number  rtt  host_IP(hostname)
+11:  1 rtt=0 ms 129.22.148.2 (host name could not be determined)
+11:  2 rtt=0 ms 10.2.0.98 (host name could not be determined)
+11:  3 rtt=1 ms 10.2.3.167 (host name could not be determined)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+11:  9 rtt=29 ms 198.71.45.193 (host name could not be determined)
+ A Timeout occurred  (type 1)
+11:  11 rtt=30 ms 50.56.6.165 (be42-corea.ord1.rackspace.net)
+11:  12 rtt=29 ms 184.106.126.129 (core1-CoreB.ord1.rackspace.net)
+11:  13 rtt=29 ms 23.253.15.41 (aggr301a-4-core2.ord1.rackspace.net)
+03:  14    rtt=29 ms    192.237.143.155 (host name could not be determined)
+**********BEGIN BINARY SEARCH PHASE**********
+probed 103.10.4.216 with 16 hops, returning an icmp of 3
+probed 103.10.4.216 with 8 hops, returning an icmp of 11
+probed 103.10.4.216 with 12 hops, returning an icmp of 3
+probed 103.10.4.216 with 10 hops, returning an icmp of 11
+probed 103.10.4.216 with 11 hops, returning an icmp of 3
+**********END BINARY SEARCH PHASE**********
+ICMP_Value  Hop_number  rtt  host_IP(hostname)
+11:  1 rtt=0 ms 129.22.148.2 (host name could not be determined)
+11:  2 rtt=0 ms 10.2.0.98 (host name could not be determined)
+11:  3 rtt=2 ms 10.2.3.167 (host name could not be determined)
+11:  4 rtt=2 ms 192.5.109.1 (inetrouter0-v103.cwru.edu)
+11:  5 rtt=5 ms 199.18.156.65 (clevs-r5-xe-2-2-0s445.core.oar.net)
+11:  6 rtt=12 ms 64.57.29.173 (et-10-0-0.1108.asbn0.tr-cps.internet2.edu)
+11:  7 rtt=82 ms 64.57.20.247 (xe-0-3-0.0.lsan0.tr-cps.internet2.edu)
+ A Timeout occurred  (type 1)
+11:  9 rtt=206 ms 61.14.157.230 (xe-0-1-0.gw6.tpe3.asianetcom.net)
+11:  10 rtt=209 ms 61.8.40.2 (host name could not be determined)
+03:  11    rtt=208 ms    103.10.4.216 (www.asus.gallery)
+**********BEGIN BINARY SEARCH PHASE**********
+probed 165.160.13.20 with 16 hops, returning an icmp of 11
+probed 165.160.13.20 with 32 hops, returning an icmp of 11
+TTL Maximum exceeded!
+**********END BINARY SEARCH PHASE**********
+ICMP_Value  Hop_number  rtt  host_IP(hostname)
+11:  1 rtt=1 ms 129.22.148.2 (host name could not be determined)
+11:  2 rtt=1 ms 10.2.0.98 (host name could not be determined)
+11:  3 rtt=1 ms 10.2.3.167 (host name could not be determined)
+ A Timeout occurred  (type 1)
+11:  5 rtt=53 ms 199.18.156.65 (clevs-r5-xe-2-2-0s445.core.oar.net)
+11:  6 rtt=12 ms 198.71.47.21 (xe-8-3-0.1118.asbn0.tr-cps.internet2.edu)
+11:  7 rtt=57 ms 206.126.236.48 (te13-1.br02.ash01.pccwbtn.net)
+11:  8 rtt=28 ms 63.218.31.10 (dcanet.ge2-4.br01.phl02.pccwbtn.net)
+11:  9 rtt=28 ms 216.158.2.2 (core-4-gig-vlan-500.hq.dca.net)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+**********BEGIN BINARY SEARCH PHASE**********
+probed 69.22.154.40 with 16 hops, returning an icmp of 3
+probed 69.22.154.40 with 8 hops, returning an icmp of 11
+probed 69.22.154.40 with 12 hops, returning an icmp of 11
+probed 69.22.154.40 with 14 hops, returning an icmp of 11
+probed 69.22.154.40 with 15 hops, returning an icmp of 11
+**********END BINARY SEARCH PHASE**********
+ICMP_Value  Hop_number  rtt  host_IP(hostname)
+11:  1 rtt=0 ms 129.22.148.2 (host name could not be determined)
+11:  2 rtt=0 ms 10.2.0.98 (host name could not be determined)
+11:  3 rtt=6 ms 10.2.3.167 (host name could not be determined)
+ A Timeout occurred  (type 1)
+11:  5 rtt=8 ms 199.18.156.65 (clevs-r5-xe-2-2-0s445.core.oar.net)
+11:  6 rtt=6 ms 199.218.39.253 (clmbn-r5-et-8-0-0s100.core.oar.net)
+11:  7 rtt=9 ms 199.218.39.102 (clmbn-r9-xe-1-2-1s100.core.oar.net)
+11:  8 rtt=17 ms 76.10.196.213 (76.10.196.213.customer.bluemilenetworks.com)
+11:  9 rtt=15 ms 76.10.192.245 (1.2.CORE-RT01.226Nth.CMH.bluemilenetworks.net)
+ A Timeout occurred  (type 1)
+ A Timeout occurred  (type 1)
+11:  12 rtt=105 ms 67.220.146.137 (host name could not be determined)
+11:  13 rtt=34 ms 173.205.62.129 (ae4-69.nyc20.ip4.gtt.net)
+11:  14 rtt=34 ms 89.149.185.121 (xe-2-1-2.chi11.ip4.gtt.net)
+11:  15 rtt=35 ms 46.33.80.238 (ae4-69.cr2-ord1.ip4.gtt.net)
+03:  16    rtt=33 ms    69.22.154.40 (host name could not be determined)
