@@ -19,7 +19,7 @@ DEBUG_MODE = 1
 
 
 def main():
-    ip = socket.gethostbyname("google.com")
+    ip = socket.gethostbyname("cwru.edu")
     binary_traceroute(ip)
     # with open('targets.txt') as file_name:
     # ips = file_name.readlines()
@@ -90,15 +90,15 @@ def probe(ip, ttl):
             is_timeout = select.select([recv_socket], [], [], time_remaining)
             time_in_select = (time.time() - t)
             if not is_timeout[0]:  # changed from == []
-                return_array.append(" A Timeout occurred  (1)")
+                return_array.append(" A Timeout occurred  (type 1)")
             received_packet, address = recv_socket.recvfrom(1024)
             time_received = time.time()
             time_remaining -= time_in_select
             if time_remaining <= 0:
-                return_array.append(" A Timeout occurred  (2)")
+                return_array.append(" A Timeout occurred  (type 2)")
         except timeout:
-            return_array.append(" A Timeout occurred  (3)")
-            return return_array, -1
+            return_array.append(" A Timeout occurred  (type 3)")
+            return return_array, 11
         else:
             icmp_header_content = received_packet[20:28]  # grab the header from the packet
             # unpack the ICMP header: unsigned short, unsigned short, signed short
@@ -114,7 +114,7 @@ def probe(ip, ttl):
                 return_array.append("00:  %d rtt=%.0f ms %s" % (ttl, (time_received - time_sent) * 1000, readable_name))
                 return
             else:
-                return_array.append(" A Timeout occurred  (4)")
+                return_array.append(" A Timeout occurred  (type 4)")
             break
         finally:
             send_socket.close()
@@ -139,21 +139,26 @@ def binary_traceroute(host_ip):
             print "probed %s with %d hops, returning an icmp of %s" % (host_ip, ttl_current, icmp_value)
         # icmp_value of 3 (dest_unreachable) indicates ttl was too high, OR just right (tricky)
         # icmp_value of 11 (ttl_expired) indicates ttl was too low, and packet was dropped before destination
-        if icmp_value is 11 and rapid_increase_phase:
-            ttl_lb = ttl_current
+        if icmp_value is 11 and rapid_increase_phase is 1:
+            ttl_lb = ttl_current*2
             ttl_ub *= 2
+            if ttl_ub >= ABSOLUTE_TTL_MAX:
+                ttl_ub = ABSOLUTE_TTL_MAX
+                print "TTL Maximum exceeded!"
+                break
             # todo: use the absolute max_ttl
         elif icmp_value is 11:
             ttl_lb = ttl_current
-            ttl_ub = (ttl_lb + ttl_ub) / 2
+            # ttl_ub = (ttl_lb + ttl_ub) / 2
         elif icmp_value is 3:
             rapid_increase_phase = 0
             ttl_ub = ttl_current
-            ttl_lb = (ttl_lb + ttl_ub) / 2
+            # ttl_lb = (ttl_lb + ttl_ub) / 2
         ttl_current = (ttl_lb + ttl_ub) / 2
     print "**********END BINARY SEARCH PHASE**********"
     # exited while loop, run the traceroute with ttl_ub.
-    for i in xrange(1, ttl_ub):
+    print "ICMP_Value  Hop_number  rtt  host_IP(hostname)"
+    for i in xrange(1, ttl_ub+1):
         output, _ = probe(host_ip, i)
         print output[0]
 
