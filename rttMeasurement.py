@@ -1,8 +1,7 @@
-# TODO: actually use the ABSOLUTE_MAX_TTL
-# TODO: finish writing and debugging the new binary search implementation
 # adapted from          https://github.com/ashabbir/Traceroute/blob/master/icmppinger.py
 # with more help from   https://blogs.oracle.com/ksplice/entry/learning_by_doing_writing_your
 # and from              http://en.wikipedia.org/wiki/Binary_search_algorithm#Iterative
+# and from              http://en.wikipedia.org/wiki/Internet_Control_Message_Protocol
 
 from socket import *
 import socket
@@ -67,11 +66,12 @@ def get_name(host_ip):
         host = socket.gethostbyaddr(host_ip)
         name = '{0} ({1})'.format(host_ip, host[0])
     except Exception:
-        name = '{0} (host name could not be determined)'.format(host_ip)
+        name = '{0} ({1})'.format(host_ip, host_ip)
     return name
 
 
-# gets the route to a host, resolving nodes along the way traceroute-style
+# probes the host at the given ttl, using the route specified from the given IP.
+# returns a string representation of the response, and the ICMP return value
 def probe(ip, ttl):
     time_remaining = TIMEOUT
     return_array = []
@@ -144,23 +144,22 @@ def binary_traceroute(host_ip):
                 ttl_ub = ABSOLUTE_TTL_MAX
                 print "TTL Maximum exceeded!"
                 break
-            # todo: use the absolute max_ttl
         elif icmp_value is 11:
             ttl_lb = ttl_current
-            # ttl_ub = (ttl_lb + ttl_ub) / 2
         elif icmp_value is 3:
             rapid_increase_phase = 0
             ttl_ub = ttl_current
-            # ttl_lb = (ttl_lb + ttl_ub) / 2
         ttl_current = (ttl_lb + ttl_ub) / 2
     print "**********END BINARY SEARCH PHASE**********"
     # exited while loop, run the traceroute with ttl_ub.
+    print "**********BEGIN TRACEROUTE PHASE**********"
     print "ICMP_Value  Hop_number  rtt  host_IP(hostname)"
     for i in xrange(1, ttl_ub+1):
         output, _ = probe(host_ip, i)
         print output[0]
         if _ is 3:
             break
+    print "**********END TRACEROUTE PHASE**********"
 
 if __name__ == '__main__':
     main()
