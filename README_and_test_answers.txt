@@ -41,3 +41,6 @@ So test 9 will take some time as you wait for the last several hops to timeout.
 
 
 I included the sample run I used to compile "Ping dataset" in the text file "source_dataset.txt"
+    The conclusions to draw are pretty clear: increases in RTT generally linearly increase with the number of hops
+        Geographic distance is typically impacts RTT more than anything else (that darn speed of light)
+        Jitter within the RTT is easily observed at the lower hops
